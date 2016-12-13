@@ -1,6 +1,6 @@
-body {
-	max-width: 960px;
-	max-height: 960px;
+#container {
+	width: 960px;
+	height: 960px;
 }
 
 .unfilled {

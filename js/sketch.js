@@ -4,11 +4,9 @@
 function drawgrid(gridsize = 4) {
 	screensize = 960; // max area for grid
 
-	$("div").remove(); // clear old grid if it exists
-
 	for (column = 0; column <= gridsize; column++) {
 		for (i = 0; i <= gridsize; i++) {
-			$("body").append("<div class='unfilled'></div>");
+			$("#container").append("<div class='unfilled'></div>");
 		}
 	}
 
@@ -17,20 +15,29 @@ function drawgrid(gridsize = 4) {
 }
 
 function deletegrid() {
-	// remove entire grid
+	$(".unfilled").remove();
+	$(".filled").remove();
 }
+
+function mainLoop() {
+	var lp = setInterval(function() {
+		$(".unfilled").hover(function() {
+			$(this).addClass("filled");
+			$(this).removeClass("unfilled");
+		});
+	}, 500);
+
+	$("#clear").click(function() {
+		clearInterval(lp);
+		var newgridsize = prompt("Enter size for new grid");
+		deletegrid();
+		drawgrid(newgridsize);
+		mainLoop();
+	});
+}
+
 
 $(document).ready(function() {
 	drawgrid();
-
-	$(".unfilled").hover(function() {
-		$(this).addClass("filled");
-		$(this).removeClass("unfilled");
-	});
-
-	$("#clear").click(function() {
-		var newgridsize = prompt("Enter size for new grid");
-		drawgrid(newgridsize);
-	});
-
+	mainLoop();
 });
