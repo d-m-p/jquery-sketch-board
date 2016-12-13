@@ -25,11 +25,15 @@ function mainLoop() {
 			$(this).addClass("filled");
 			$(this).removeClass("unfilled");
 		});
+
+		// textbox mirror
+		var ent = $("input.entered").val();
+		$("input.mirror").val(ent);
 	}, 500);
 
 	$("#clear").click(function() {
 		clearInterval(lp);
-		var newgridsize = prompt("Enter size for new grid");
+		var newgridsize = $("input").val();
 		deletegrid();
 		drawgrid(newgridsize);
 		mainLoop();
