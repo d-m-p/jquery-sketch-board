@@ -1,10 +1,13 @@
 html {
-	margin: 0 auto;
 }
 
 #options {
 	margin-left: 40%;
 	margin-right: 40%;
+}
+
+div {
+	vertical-align:top;
 }
 
 #makenew {
@@ -20,23 +23,16 @@ input {
 	text-align: center;
 }
 
-#container {
-	margin-top: 10px;
-
-}
-
-.row {
-
+.maxmsg {
+	text-align: right;
 }
 
 .unfilled {
-	margin: 5px;
 	display:inline-block;
 	background-color: blue;
 }
 
 .filled {
-	margin: 5px;
 	display:inline-block;
 	background-color: red;
 }

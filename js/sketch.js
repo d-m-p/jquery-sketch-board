@@ -1,12 +1,18 @@
-// generate 16x16 div grid, scalable to any size
-// 960px x 960px
-
 function drawgrid(gridsize = 16) {
-	screensize = 960; // max area for grid
+	var screensize = 960; // max area for grid
+	var maxgrid = 60;
+	var errorsize = 16; // size to use in case of bad input
 
-	if(gridsize > 90) { // large performance hit around 92
-		gridsize = 90;
-		$("input.entered").val("90");
+	if(/^\+?([1-9]\d*)$/.test(gridsize) == false) { // check if gridsize is an integer > 0
+		gridsize = errorsize;
+		$("input.entered").val(errorsize);
+	} 
+
+	if(gridsize > maxgrid) { 
+		gridsize = maxgrid;
+		$("input.entered").val(maxgrid);
+		$("#makenew").append("<div id='maxmsg'>" + maxgrid + "'s the max. I don't want to crash your browser!</div>");
+		$("#maxmsg").fadeOut(7000);
 	}
 
 	for (row = 0; row < gridsize; row++) {
@@ -17,13 +23,15 @@ function drawgrid(gridsize = 16) {
 		$("#container").append("</div>");
 	}
 
-	$(".unfilled").height("10px");
-	$(".unfilled").width("10px");
+	square_size = screensize / gridsize;
+	$(".unfilled").height(square_size);
+	$(".unfilled").width(square_size);
 }
 
 function deletegrid() {
 	$(".unfilled").remove();
 	$(".filled").remove();
+	$(".row").remove();
 }
 
 function rainbowLoop () {
@@ -31,14 +39,17 @@ function rainbowLoop () {
 }
 
 function mainLoop() {
+	$unfilled = $(".unfilled");
+	$entered = $("input.entered");
+
 	var lp = setInterval(function() {
-		$(".unfilled").hover(function() {
+		$unfilled.hover(function() {
 			$(this).addClass("filled");
 			$(this).removeClass("unfilled");
 		});
 
 		// textbox mirror
-		var ent = $("input.entered").val();
+		var ent = $entered.val();
 		$("input.mirror").val(ent);
 	}, 500);
 
