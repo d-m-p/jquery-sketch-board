@@ -1,7 +1,7 @@
 // generate 16x16 div grid, scalable to any size
 // 960px x 960px
 
-function drawgrid(gridsize = 4) {
+function drawgrid(gridsize = 16) {
 	screensize = 960; // max area for grid
 
 	for (row = 0; row <= gridsize; row++) {
