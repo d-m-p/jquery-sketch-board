@@ -4,10 +4,12 @@
 function drawgrid(gridsize = 4) {
 	screensize = 960; // max area for grid
 
-	for (column = 0; column <= gridsize; column++) {
-		for (i = 0; i <= gridsize; i++) {
-			$("#container").append("<div class='unfilled'></div>");
-		}
+	for (row = 0; row <= gridsize; row++) {
+		$("#container").append("<div class='row'>");
+			for (i = 0; i <= gridsize; i++) {
+				$("#container").append("<div class='unfilled'></div>");
+			}
+		$("#container").append("</div>")
 	}
 
 	$(".unfilled").height("10px");
