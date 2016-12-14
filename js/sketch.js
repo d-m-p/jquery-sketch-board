@@ -1,6 +1,6 @@
 function drawgrid(gridsize = 16) {
-	var screensize = 960; // max area for grid
-	var maxgrid = 60;
+	var screensize = 750; // max area for grid
+	var maxgrid = 40;
 	var errorsize = 16; // size to use in case of bad input
 
 	if(/^\+?([1-9]\d*)$/.test(gridsize) == false) { // check if gridsize is an integer > 0
@@ -11,8 +11,8 @@ function drawgrid(gridsize = 16) {
 	if(gridsize > maxgrid) { 
 		gridsize = maxgrid;
 		$("input.entered").val(maxgrid);
-		$("#makenew").append("<div id='maxmsg'>" + maxgrid + "'s the max. I don't want to crash your browser!</div>");
-		$("#maxmsg").fadeOut(7000);
+		$("#options").prepend("<p class='maxmsg'>" + maxgrid + "'s the max. I don't want to crash your browser!</p>");
+		$(".maxmsg").fadeOut(5000);
 	}
 
 	for (row = 0; row < gridsize; row++) {
@@ -64,6 +64,12 @@ function mainLoop() {
 
 
 $(document).ready(function() {
+	$('button').click(function() {
+		$('button').fadeTo(100, 0.8, function() { 
+			$(this).fadeTo(100, 1.0); 
+		});
+	});
+
 	drawgrid();
 	mainLoop();
 });

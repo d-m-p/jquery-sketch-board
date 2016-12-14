@@ -1,14 +1,50 @@
 html {
+	background-color: #5182d1;
+	font-family: Tahoma, sans-serif;
+	color: #141414;
 }
 
-#options {
-	margin-left: 40%;
-	margin-right: 40%;
-}
 
 div {
 	vertical-align:top;
 }
+
+input {
+	margin-top: 10px;
+	color: #141414;
+	font-size: 24px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border: none;
+}
+
+button {
+	color: #141414;
+	height: 50px;
+	width: 200px;
+	background-color: #ccc;
+	border-style: none;
+	border-radius: 2px;
+}
+
+
+button:focus {
+	outline: none;
+} 
+
+
+#container {
+	margin: 10px 0px 0px 25%;
+}
+
+#options {
+	color: #141414;
+	font-size: 30px;
+	margin-left: 40%;
+	margin-right: 40%;
+}
+
 
 #makenew {
 	margin-left: 40%;
@@ -16,23 +52,25 @@ div {
 	margin-top: 5px;
 }
 
-input {
-	font-size: 24px;
-	width: 30px;
-	height: 30px;
-	text-align: center;
-}
-
 .maxmsg {
-	text-align: right;
+	color: #302626;
+	text-align:center;
+	font-size: 15px;
+	margin: 64px 0px 0px 12%;
+	position: absolute;
+	background-color: #ffc1c1;
+	width: 350px;
+	height: 18px;
 }
 
 .unfilled {
 	display:inline-block;
-	background-color: blue;
+	background-color: #f2f2f2;
+	box-shadow:1px 1px 1px 1px #141414 inset;
 }
 
 .filled {
 	display:inline-block;
-	background-color: red;
+	background-color: #0a0a0a;
+	box-shadow:1px 1px 1px 1px #141414 inset;
 }
