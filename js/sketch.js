@@ -19,6 +19,10 @@ function deletegrid() {
 	$(".filled").remove();
 }
 
+function rainbowLoop () {
+	// enable rainbow mode, squares change color every hover
+}
+
 function mainLoop() {
 	var lp = setInterval(function() {
 		$(".unfilled").hover(function() {
