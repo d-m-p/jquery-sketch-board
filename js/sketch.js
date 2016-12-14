@@ -4,12 +4,17 @@
 function drawgrid(gridsize = 16) {
 	screensize = 960; // max area for grid
 
-	for (row = 0; row <= gridsize; row++) {
+	if(gridsize > 90) { // large performance hit around 92
+		gridsize = 90;
+		$("input.entered").val("90");
+	}
+
+	for (row = 0; row < gridsize; row++) {
 		$("#container").append("<div class='row'>");
-			for (i = 0; i <= gridsize; i++) {
+			for (i = 0; i < gridsize; i++) {
 				$("#container").append("<div class='unfilled'></div>");
 			}
-		$("#container").append("</div>")
+		$("#container").append("</div>");
 	}
 
 	$(".unfilled").height("10px");
@@ -39,7 +44,7 @@ function mainLoop() {
 
 	$("#clear").click(function() {
 		clearInterval(lp);
-		var newgridsize = $("input").val();
+		var newgridsize = $("input.entered").val();
 		deletegrid();
 		drawgrid(newgridsize);
 		mainLoop();
